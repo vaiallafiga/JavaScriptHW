@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог игр</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Игровой маркет</h1>
+            <div class="nav-buttons">
+                <button class="tab-btn active" data-tab="catalog">Каталог</button>
+                <button class="tab-btn" data-tab="favorites">Избранное (<span id="fav-count">0</span>)</button>
+                <button class="tab-btn" data-tab="cart">Корзина (<span id="cart-count">0</span>)</button>
+            </div>
+            <button id="theme-toggle">🌙 Тема</button>
+        </header>
+
+        <section id="tab-catalog" class="tab-content active">
+            <div class="form-section">
+                <h3>Добавить новую игру</h3>
+                <form id="game-form">
+                    <input type="text" id="title" placeholder="Название игры" required>
+                    <input type="text" id="genre" placeholder="Жанр" required>
+                    <input type="number" id="price" placeholder="Цена (₸)" required min="0">
+                    <input type="number" id="rating" placeholder="Рейтинг (0-5)" required min="0" max="5" step="0.1">
+                    <input type="url" id="image" placeholder="Ссылка на картинку (URL)" required>
+                    <button type="submit">Добавить игру</button>
+                </form>
+            </div>
+
+            <div class="search-section">
+                <input type="text" id="search-input" placeholder="🔍 Поиск игры по названию...">
+            </div>
+
+            <div class="catalog-section">
+                <div id="loading" class="loader">Загрузка игр...</div>
+                <div id="games-grid" class="grid"></div>
+            </div>
+        </section>
+
+        <section id="tab-favorites" class="tab-content">
+            <h2>Избранные игры</h2>
+            <div id="favorites-grid" class="grid"></div>
+        </section>
+
+
+        <section id="tab-cart" class="tab-content">
+            <h2>🛒 Корзина покупок</h2>
+            <div class="cart-container">
+                <div id="cart-items-list"></div>
+                <div class="cart-summary">
+                    <h3>Итого: <span id="cart-total">0</span> ₸</h3>
+                    <button id="clear-cart-btn" class="danger-btn">Очистить корзину</button>
+                    <button id="checkout-btn" class="success-btn">Оформить заказ</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>💳 Оплата заказа</h2>
+            <form id="payment-form">
+                <input type="text" placeholder="Имя владельца карты" required>
+                <input type="text" placeholder="Номер карты (XXXX XXXX XXXX XXXX)" maxlength="19" required>
+                <div class="row-inputs">
+                    <input type="text" placeholder="MM/YY" maxlength="5" required>
+                    <input type="password" placeholder="CVV" maxlength="3" required>
+                </div>
+                <button type="submit" class="success-btn">Оплатить</button>
+            </form>
+        </div>
+    </div>
+
+
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
